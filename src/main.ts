@@ -1,15 +1,10 @@
 import axios from 'axios';
 import fs from 'fs';
-import { OverpassAPISettings, OverpassAPIResult } from './type';
+import { OverpassAPISettings, OverpassAPIResult, BBox } from './type';
 
 export interface OSMQueryConstructor extends OverpassAPISettings {
 	endPoint?: string
-	bbox?: {
-		south: number
-		west: number
-		north: number
-		east: number
-	}
+	bbox?: BBox
 }
 export class OSMQuery {
 	endPoint: string

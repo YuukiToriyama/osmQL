@@ -1,3 +1,9 @@
+export interface BBox {
+	south: number
+	west: number
+	north: number
+	east: number
+}
 export interface OverpassAPISettings {
 	timeout?: number
 	maxsize?: number
