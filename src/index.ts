@@ -1,0 +1,1 @@
+export { OSMQuery, OSMQueryConstructor } from "./main";
