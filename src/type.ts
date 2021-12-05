@@ -1,3 +1,7 @@
+export type Polygon = {
+	lat: number
+	lon: number
+}[];
 export interface BBox {
 	south: number
 	west: number

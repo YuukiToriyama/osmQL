@@ -1,5 +1,6 @@
 import axios from 'axios';
 import fs from 'fs';
+import { QueryBuilder, QueryBuilderConstructor } from './QueryBuilder';
 import { OverpassAPISettings, OverpassAPIResult, BBox } from './type';
 
 export interface OSMQueryConstructor extends OverpassAPISettings {
@@ -27,6 +28,18 @@ export class OSMQuery {
 		this.bbox = options?.bbox || undefined;
 	}
 
+	// QueryBuilderを使ったリクエスト
+	static queryBuilder = (options: QueryBuilderConstructor) => {
+		return new QueryBuilder(options);
+	}
+	static get = (queryBuilder: QueryBuilder) => {
+		const osmQuery = new OSMQuery();
+		osmQuery.fromQLString(queryBuilder.toString() + "out;");
+		console.log(osmQuery.toString());
+		return osmQuery.query();
+	}
+
+	// 手書きのQLを使ったリクエスト
 	public fromQLString = (queryString: string) => {
 		this.queryString = queryString;
 		return this;
@@ -41,6 +54,7 @@ export class OSMQuery {
 		return this;
 	}
 
+	// クエリを実行する
 	public query = async () => {
 		if (this.queryString === undefined) {
 			throw Error("You tried to send API request, but the query is empty.");
@@ -55,6 +69,6 @@ export class OSMQuery {
 
 	public toString = () => {
 		const settings = Object.entries(this.settings).filter(x => x[1] !== undefined).map(x => `[${x[0]}:${x[1]}]`).join("");
-		return settings + (this.bbox && `[bbox:${this.bbox.south}, ${this.bbox.west}, ${this.bbox.north}, ${this.bbox.east}]`) + ";\n" + this.queryString;
+		return settings + (this.bbox ? `[bbox:${this.bbox.south}, ${this.bbox.west}, ${this.bbox.north}, ${this.bbox.east}]` : "") + ";\n" + this.queryString;
 	}
 }
