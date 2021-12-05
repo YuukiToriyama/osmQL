@@ -17,7 +17,7 @@ Easy access to OSM's gold mine of information.
 	});
 	const query = osmQuery.fromQLString("node['name' ~ '^松屋'];out;");
 	console.log(query.toString());
-	query.query().then((result) => {
+	query.execute().then((result) => {
 		console.log(result);
 	});
 })();
@@ -36,9 +36,26 @@ out;
 (async () => {
 	const osmQuery = new OSMQuery({});
 	const query = osmQuery.fromQLFile("./sample.ql");
-	query.query().then((result) => {
+	query.execute().then((result) => {
 		console.log(result);
 	});
+})();
+```
+
+```javascript
+(async () => {
+	const query = OSMQuery.queryBuilder({
+		category: "node",
+	});
+	query.setBounding({
+		south: 35.0,
+		west: 135.73,
+		north: 35.05,
+		east: 135.79,
+	});
+	query.editedBy("Torichan");
+	const result = await OSMQuery.get(query);
+	console.log(result.toGeoJSON());
 })();
 ```
 
