@@ -5,12 +5,22 @@ Easy access to OSM's gold mine of information.
 ## Usage
 
 ```javascript
-const osmQuery = new OSMQuery({});
-const qlString = "[out:json];node(57.7,11.9,57.8,12.0)[amenity=bar];out;";
-const query = osmQuery.fromQLString(qlString);
-query.query().then((result) => {
-	console.log(result);
-});
+(async () => {
+	const osmQuery = new OSMQuery({
+		timeout: 25,
+		bbox: {
+			south: 35.0,
+			west: 135.73,
+			north: 35.05,
+			east: 135.79,
+		},
+	});
+	const query = osmQuery.fromQLString("node['name' ~ '^松屋'];out;");
+	console.log(query.toString());
+	query.query().then((result) => {
+		console.log(result);
+	});
+})();
 ```
 
 ```text
