@@ -1,0 +1,26 @@
+{
+	"name": "osmql",
+	"version": "0.0.9",
+	"description": "Easy access to OSM's gold mine of information.",
+	"main": "dist/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/YUUKIToriyama/osmQL.git"
+	},
+	"keywords": [
+		"openstreetmap"
+	],
+	"author": "YUUKIToriyama <github@toriyama.dev>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/YUUKIToriyama/osmQL/issues"
+	},
+	"homepage": "https://github.com/YUUKIToriyama/osmQL#readme",
+	"devDependencies": {
+		"@types/node": "^16.11.11",
+		"typescript": "^4.5.2"
+	}
+}
