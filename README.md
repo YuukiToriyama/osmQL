@@ -26,7 +26,7 @@ npm install @toriyama/osmql
 クラス`OSMQuery`をインポートしたらまずインスタンスを作成してください。
 
 ```javascript
-import OSMQuery from "@toriyama/osmql";
+import { OSMQuery } from "@toriyama/osmql";
 const osmQuery = new OSMQuery(options);
 ```
 
