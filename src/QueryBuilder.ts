@@ -17,9 +17,9 @@ export class QueryBuilder {
 				this.tagFilters.push(`[${tagName}="${value}"]`);
 			} else if (value instanceof RegExp) {
 				if (value.ignoreCase) {
-					this.tagFilters.push(`[${tagName}~${value.source}, i]`);
+					this.tagFilters.push(`['${tagName}' ~ '${value.source}', i]`);
 				} else {
-					this.tagFilters.push(`[${tagName}~${value.source}]`);
+					this.tagFilters.push(`['${tagName}' ~ '${value.source}']`);
 				}
 			}
 			return this;
