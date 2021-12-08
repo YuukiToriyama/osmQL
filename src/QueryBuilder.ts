@@ -5,9 +5,9 @@ export interface QueryBuilderConstructor {
 }
 export class QueryBuilder {
 	private options: QueryBuilderConstructor
-	private tagFilters: string[]
-	private boundingFilter: string
-	private userFilter: string
+	private tagFilters: string[] = [];
+	private boundingFilter: string = "";
+	private userFilter: string = "";
 	constructor(options: QueryBuilderConstructor) {
 		this.options = options;
 	}
@@ -17,9 +17,9 @@ export class QueryBuilder {
 				this.tagFilters.push(`[${tagName}="${value}"]`);
 			} else if (value instanceof RegExp) {
 				if (value.ignoreCase) {
-					this.tagFilters.push(`[${tagName}~${value}, i]`);
+					this.tagFilters.push(`[${tagName}~${value.source}, i]`);
 				} else {
-					this.tagFilters.push(`[${tagName}~${value}]`);
+					this.tagFilters.push(`[${tagName}~${value.source}]`);
 				}
 			}
 			return this;
