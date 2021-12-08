@@ -1,11 +1,12 @@
 {
-	"name": "osmql",
+	"name": "@toriyama/osmql",
 	"version": "0.0.9",
 	"description": "Easy access to OSM's gold mine of information.",
 	"main": "dist/index.js",
 	"scripts": {
 		"build": "rimraf ./dist && tsc",
-		"test": "jest"
+		"test": "jest",
+		"prepublishOnly": "npm run test && npm run build"
 	},
 	"repository": {
 		"type": "git",
