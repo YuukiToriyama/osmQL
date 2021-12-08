@@ -135,6 +135,7 @@ OSMQuery.get(query).then((result) => {
 ## Todo
 
 - [ ] ブラウザでも実行できるようにする
+- [ ] 詳細なドキュメントを作成
 - [ ] 複雑なクエリも QueryBuilder を使って生成できるようにする
 
 ## Author

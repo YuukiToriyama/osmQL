@@ -13,8 +13,8 @@ export class QueryBuilder {
 	}
 	public filterBy = (tagName: string) => {
 		return (value: string | RegExp) => {
-			if (value instanceof String) {
-				this.tagFilters.push(`[${tagName}="${value}"]`);
+			if (typeof value === "string") {
+				this.tagFilters.push(`['${tagName}' = '${value}']`);
 			} else if (value instanceof RegExp) {
 				if (value.ignoreCase) {
 					this.tagFilters.push(`['${tagName}' ~ '${value.source}', i]`);
@@ -28,7 +28,7 @@ export class QueryBuilder {
 	public setBounding = (bounding: BBox | Polygon) => {
 		if (bounding instanceof Array) {
 			const points = bounding.map(point => `${point.lat} ${point.lon}`).join(" ");
-			this.boundingFilter = `(poly: ${points})`;
+			this.boundingFilter = `(poly: "${points}")`;
 		} else {
 			this.boundingFilter = `(${bounding.south}, ${bounding.west}, ${bounding.north}, ${bounding.east})`;
 		}

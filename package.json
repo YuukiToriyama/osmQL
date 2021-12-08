@@ -4,8 +4,8 @@
 	"description": "Easy access to OSM's gold mine of information.",
 	"main": "dist/index.js",
 	"scripts": {
-		"build": "tsc",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "rimraf ./dist && tsc",
+		"test": "jest"
 	},
 	"repository": {
 		"type": "git",
@@ -22,12 +22,28 @@
 	},
 	"homepage": "https://github.com/YUUKIToriyama/osmQL#readme",
 	"devDependencies": {
+		"@types/jest": "^27.0.3",
 		"@types/node": "^16.11.11",
 		"@types/osmtogeojson": "^2.2.30",
+		"jest": "^27.4.3",
+		"rimraf": "^3.0.2",
+		"ts-jest": "^27.1.1",
+		"ts-node": "^10.4.0",
 		"typescript": "^4.5.2"
 	},
 	"dependencies": {
 		"axios": "^0.24.0",
 		"osmtogeojson": "^1.4.0"
+	},
+	"jest": {
+		"verbose": true,
+		"transform": {
+			"^.+\\.ts": "ts-jest"
+		},
+		"globals": {
+			"ts-jest": {
+				"tsconfig": "tsconfig.json"
+			}
+		}
 	}
 }
