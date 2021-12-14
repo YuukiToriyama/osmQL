@@ -5,7 +5,7 @@ import { QueryBuilder, QueryBuilderConstructor } from './QueryBuilder';
 import { OverpassAPISettings, OverpassAPIResult, BBox } from './type';
 
 export interface OSMQueryConstructor extends OverpassAPISettings {
-	endPoint?: string
+	endPoint?: string | "https://maps.mail.ru/osm/tools/overpass/api/interpreter" | "https://overpass-api.de/api/interpreter"
 	bbox?: BBox
 }
 export class OSMQuery {
